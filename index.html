@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sivaramakrishnan — Portfolio</title>
+  <meta name="description" content="Modern portfolio template to showcase projects, skills, and contact." />
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#94a3b8; --accent:#06b6d4; --glass: rgba(255,255,255,0.03);
+      --maxw:1100px; --radius:12px; --gap:18px; --mono: 'Segoe UI', Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{font-family:var(--mono);margin:0;background:linear-gradient(180deg,#071025 0%, #061021 100%);color:#e6eef6;-webkit-font-smoothing:antialiased}
+    .container{max-width:var(--maxw);margin:28px auto;padding:28px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:var(--radius);padding:18px;box-shadow:0 6px 30px rgba(2,6,23,0.6);}
+
+    /* Header */
+    header{display:flex;gap:18px;align-items:center}
+    .avatar{width:96px;height:96px;border-radius:12px;overflow:hidden;flex:0 0 96px;border:2px solid rgba(255,255,255,0.06)}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .hdr-info h1{margin:0;font-size:1.35rem}
+    .hdr-info p{margin:6px 0 0;color:var(--muted);font-size:0.95rem}
+    .hdr-actions{margin-left:auto;display:flex;gap:10px}
+    .btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:#e6eef6;cursor:pointer;font-weight:600}
+    .btn.primary{background:var(--accent);border:none;color:#022;}
+
+    /* Layout */
+    .split{display:grid;grid-template-columns:280px 1fr;gap:var(--gap);margin-top:18px}
+    .left .section-title{font-size:0.95rem;color:var(--muted);margin-bottom:8px}
+    .profile-blurb{color:var(--muted);line-height:1.45;font-size:0.95rem}
+    .skill-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .skill{background:var(--glass);padding:6px 8px;border-radius:999px;font-size:0.85rem;color:var(--muted)}
+
+    /* Projects grid */
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+    .proj{background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));padding:12px;border-radius:10px;cursor:pointer;transition:transform .18s ease, box-shadow .18s}
+    .proj:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+    .proj .thumb{height:120px;border-radius:8px;overflow:hidden;background:#061124;margin-bottom:10px}
+    .proj h3{margin:0;font-size:1rem}
+    .proj p{color:var(--muted);font-size:0.9rem;margin:6px 0 0}
+
+    /* Modal */
+    .modal{position:fixed;inset:0;background:rgba(2,6,23,0.7);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .18s}
+    .modal.open{opacity:1;pointer-events:auto}
+    .modal-card{width:min(820px,96%);background:#071428;padding:18px;border-radius:12px}
+    .modal-card h2{margin-top:0}
+
+    /* Footer */
+    footer{margin-top:18px;color:var(--muted);font-size:0.9rem;text-align:center}
+
+    /* Responsive */
+    @media (max-width:880px){.split{grid-template-columns:1fr;}.avatar{width:86px;height:86px}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <header>
+        <div class="avatar"><img src="https://via.placeholder.com/300x300.png?text=Photo" alt="Your photo" id="profilePhoto"></div>
+        <div class="hdr-info">
+          <h1>Sivaramakrishnan Subramanian</h1>
+          <p>Delivery Manager • Cloud & Data • Program Management</p>
+          <p style="color:var(--muted);font-size:0.9rem;margin-top:6px">Chennai, India • +91 7200009641 • <a href="mailto:sivaatzenith@gmail.com" style="color:var(--accent);text-decoration:none">sivaatzenith@gmail.com</a></p>
+        </div>
+        <div class="hdr-actions">
+          <button class="btn" onclick="downloadHTML()">Download</button>
+          <button class="btn primary" onclick="scrollToProjects()">View Projects</button>
+        </div>
+      </header>
+
+      <div class="split">
+        <aside class="left">
+          <div class="section">
+            <div class="section-title">About</div>
+            <div class="profile-blurb">PMI‑certified Delivery Manager with 19+ years in IT across Logistics, Travel-Transport and Healthcare. Expert in Azure Data Engineering, Power BI and large-scale cloud migrations. Passionate about building reliable delivery pipelines and mentoring teams.</div>
+          </div>
+
+          <div class="section" style="margin-top:14px">
+            <div class="section-title">Skills</div>
+            <div class="skill-list">
+              <div class="skill">Program Management</div>
+              <div class="skill">Cloud Migration</div>
+              <div class="skill">Azure Data Engineer</div>
+              <div class="skill">Power BI</div>
+              <div class="skill">SQL Server</div>
+              <div class="skill">C# / .NET</div>
+            </div>
+          </div>
+
+          <div class="section" style="margin-top:14px">
+            <div class="section-title">Certifications</div>
+            <div style="color:var(--muted);font-size:0.95rem">PMP, DASSM, DP‑200/201, PL‑300, SnowPro, AZ‑900</div>
+          </div>
+
+        </aside>
+
+        <main>
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <h2 style="margin:0">Projects</h2>
+            <div style="color:var(--muted);font-size:0.9rem">Click a project to view details</div>
+          </div>
+
+          <div id="projects" class="projects-grid" style="margin-top:12px">
+            <!-- Project cards: copy & edit these blocks for new projects -->
+            <div class="proj" data-title="Project: Cloud Migration for Logistics" data-desc="Led migration of ETL pipelines to Azure Data Factory and refactored SSIS jobs. Achieved 40% faster processing and 99.9% availability." data-link="#">
+              <div class="thumb"><img src="https://via.placeholder.com/800x400.png?text=Project+1" style="width:100%;height:100%;object-fit:cover"/></div>
+              <h3>Cloud Migration — Logistics</h3>
+              <p>Azure Data Factory • SSIS refactor • Power BI</p>
+            </div>
+
+            <div class="proj" data-title="Project: Revenue Enablement Dashboard" data-desc="Designed Power BI dashboards to provide real-time revenue insights and forecasting for the commercial team." data-link="#">
+              <div class="thumb"><img src="https://via.placeholder.com/800x400.png?text=Project+2" style="width:100%;height:100%;object-fit:cover"/></div>
+              <h3>Revenue Enablement</h3>
+              <p>Power BI • Data Modeling • Forecasting</p>
+            </div>
+
+            <div class="proj" data-title="Project: Mainframe Modernization" data-desc="Converted legacy COBOL batch jobs to modern Java microservices using automated refactoring and CI/CD pipelines." data-link="#">
+              <div class="thumb"><img src="https://via.placeholder.com/800x400.png?text=Project+3" style="width:100%;height:100%;object-fit:cover"/></div>
+              <h3>Mainframe Modernization</h3>
+              <p>Refactoring • Java • CI/CD</p>
+            </div>
+
+            <!-- end project cards -->
+          </div>
+
+          <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
+            <button class="btn" onclick="openContact()">Contact</button>
+            <a class="btn" href="#" style="text-decoration:none">Download Resume</a>
+          </div>
+
+        </main>
+      </div>
+
+    </div>
+
+    <footer>Built with ❤️ — Edit this single file to add more projects or tweak styling.</footer>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal" role="dialog" aria-hidden="true">
+    <div class="modal-card card">
+      <button style="float:right;background:transparent;border:none;color:var(--muted);font-weight:700;cursor:pointer" onclick="closeModal()">✕</button>
+      <h2 id="modalTitle">Project Title</h2>
+      <p id="modalDesc" style="color:var(--muted)"></p>
+      <div style="margin-top:12px"><a id="modalLink" href="#" target="_blank" class="btn">View</a></div>
+    </div>
+  </div>
+
+  <script>
+    // Project card click -> modal
+    document.querySelectorAll('.proj').forEach(p => p.addEventListener('click', ()=>{
+      document.getElementById('modalTitle').innerText = p.dataset.title;
+      document.getElementById('modalDesc').innerText = p.dataset.desc;
+      document.getElementById('modalLink').href = p.dataset.link || '#';
+      document.getElementById('modal').classList.add('open');
+      document.getElementById('modal').setAttribute('aria-hidden', 'false');
+    }));
+    function closeModal(){document.getElementById('modal').classList.remove('open');document.getElementById('modal').setAttribute('aria-hidden','true')}
+
+    function openContact(){alert('Email: sivaatzenith@gmail.com — or replace this with a contact form in the HTML');}
+    function scrollToProjects(){document.getElementById('projects').scrollIntoView({behavior:'smooth'});}
+
+    // Simple download: blob of current HTML
+    function downloadHTML(){
+      const docHtml = '<!doctype html>\n' + document.documentElement.outerHTML;
+      const blob = new Blob([docHtml], {type: 'text/html'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'portfolio_sivaramakrishnan.html'; document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
